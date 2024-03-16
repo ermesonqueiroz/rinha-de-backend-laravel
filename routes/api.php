@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\API\TransactionsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('teste', function () {
-    dd('Hello World');
+Route::prefix('clientes/{customerId}')->group(function () {
+    Route::get('/extrato', [TransactionsController::class, 'index']);
+    Route::post('/transacoes', [TransactionsController::class, 'store']);
 });
