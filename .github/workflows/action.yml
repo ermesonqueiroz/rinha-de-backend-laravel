@@ -14,7 +14,7 @@ jobs:
         with:
           APP_NAME: 'Laravel'
           APP_ENV: 'local'
-          APP_KEY:
+          APP_KEY: ''
           APP_DEBUG: true
           APP_URL: 'http://localhost'
           DB_CONNECTION: 'mysql'
@@ -34,6 +34,6 @@ jobs:
     needs: [build]
     steps:
       - name: Run database migrations
-        run: php artisan migrate --seed
+        run: php artisan migrate --seed --no-interaction --no-ansi
       - name: Start server
         run: php artisan serve
